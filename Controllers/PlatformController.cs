@@ -7,7 +7,7 @@ using PlatformService.Models;
 namespace PlatformService.Controllers
 {
     [ApiController]
-    [Route("/api/[controller]")]
+    [Route("/api/c/[controller]")]
     public class PlatformController : ControllerBase
     {
         private readonly IPlatformRepository _repository;
