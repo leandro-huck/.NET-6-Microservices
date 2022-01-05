@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace CommandService.Controllers
 {
     [ApiController]
-    [Route("/api/c/[controller]")]
+    [Route("/api/p/[controller]")]
     public class PlatformController : ControllerBase
     {
         public PlatformController()
         {
-            
+
         }
 
         [HttpPost]
