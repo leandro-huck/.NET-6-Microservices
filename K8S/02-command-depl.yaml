@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: command-depl
+spec:
+  selector:
+    matchLabels:
+      app: command-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: command-service
+    spec:
+      containers:
+        - name: command-service
+          image: lhuck/command-service:latest
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: command-clusterip-srv
+spec:
+  type: ClusterIP
+  selector:
+    app: command-service
+  ports:
+    - name: command-service
+      protocol: TCP
+      port: 80
+      targetPort: 80
