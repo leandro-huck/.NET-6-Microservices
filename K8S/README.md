@@ -16,3 +16,4 @@ kubectl get events --all-namespaces  --sort-by='.metadata.creationTimestamp'
 - kubectl apply -f 03-platform-nodeport-srv.yaml
 - kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/cloud/deploy.yaml
 - kubectl apply -f 04-ingress-srv.yaml
+- kubectl apply -f 05-local-pvc.yaml

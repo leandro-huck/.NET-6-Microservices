@@ -1,5 +1,0 @@
-kubectl apply -f 01-platform-depl.yaml
-kubectl apply -f 02-command-depl.yaml
-kubectl apply -f 03-platform-nodeport-srv.yaml
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/cloud/deploy.yaml
-kubectl apply -f 05-ingress-srv.yaml
