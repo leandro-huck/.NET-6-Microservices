@@ -44,7 +44,7 @@ namespace CommandService.Data
                 .FirstOrDefault();
         }
 
-        public IEnumerable<Command> GetCommandForPlatform(int platformId)
+        public IEnumerable<Command> GetCommandsForPlatform(int platformId)
         {
             return _context.Commands
                 .Where(c => c.PlatformId == platformId)
