@@ -6,6 +6,6 @@ spec:
   resources:
     requests:
       storage: 200Mi
-  volumeMode: Filesystem
+#  volumeMode: Filesystem
   accessModes:
     - ReadWriteMany
