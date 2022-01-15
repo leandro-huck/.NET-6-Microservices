@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: command-svc
-          image: lhuck/command-svc:latest
+          image: lhuck/command-service:latest
           ports:
             - containerPort: 80
 ---
