@@ -15,6 +15,7 @@ kubectl get events --all-namespaces  --sort-by='.metadata.creationTimestamp'
 - kubectl apply -f 02-mssql-platform-depl.yaml
 - kubectl apply -f 03-platform-depl.yaml
 - kubectl apply -f 04-command-depl.yaml
-- kubectl apply -f 05-platform-nodeport-srv.yaml
+- kubectl apply -f 05-platform-nodeport-svc.yaml
 - kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.0/deploy/static/provider/cloud/deploy.yaml
-- kubectl apply -f 06-ingress-srv.yaml
+- kubectl apply -f 06-ingress-svc.yaml
+- kubectl apply -f 07-rabbitmq-depl

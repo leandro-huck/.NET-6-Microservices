@@ -1,33 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: command-depl
+  name: command-deploy
 spec:
   selector:
     matchLabels:
-      app: command-service
+      app: command-svc
   replicas: 1
   template:
     metadata:
       labels:
-        app: command-service
+        app: command-svc
     spec:
       containers:
-        - name: command-service
-          image: lhuck/command-service:latest
+        - name: command-svc
+          image: lhuck/command-svc:latest
           ports:
             - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: command-clusterip-srv
+  name: command-clusterip-svc
 spec:
   type: ClusterIP
   selector:
-    app: command-service
+    app: command-svc
   ports:
-    - name: command-service
+    - name: command-svc
       protocol: TCP
       port: 80
       targetPort: 80

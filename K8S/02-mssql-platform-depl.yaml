@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mssql-depl
+  name: mssql-deploy
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mssql-service
+      app: mssql-svc
   template:
     metadata:
       labels:
-        app: mssql-service
+        app: mssql-svc
     spec:
       containers:
-        - name: mssql-service
+        - name: mssql-svc
           image: mcr.microsoft.com/mssql/server:2017-latest
           ports:
             - containerPort: 1433
@@ -38,13 +38,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mssql-clusterip-srv
+  name: mssql-clusterip-svc
 spec:
   type: ClusterIP
   selector:
-    app: mssql-service
+    app: mssql-svc
   ports:
-    - name: mssql-service
+    - name: mssql-svc
       protocol: TCP
       port: 1433
       targetPort: 1433
@@ -56,7 +56,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: mssql-service
+    app: mssql-svc
   ports:
   - protocol: TCP
     port: 1433
