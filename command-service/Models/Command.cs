@@ -8,7 +8,7 @@ namespace CommandService.Models
         [Required]
         public int Id { get; set; }
         [Required]
-        public int HowTo { get; set; }
+        public string HowTo { get; set; }
         [Required]
         public string CommandLine { get; set; }
         [Required]
