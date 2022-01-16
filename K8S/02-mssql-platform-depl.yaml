@@ -1,50 +1,50 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mssql-depl
+  name: mssql-deploy
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mssql-service
+      app: mssql-svc
   template:
     metadata:
       labels:
-        app: mssql-service
+        app: mssql-svc
     spec:
       containers:
-        - name: mssql-service
+        - name: mssql-svc
           image: mcr.microsoft.com/mssql/server:2017-latest
           ports:
             - containerPort: 1433
           env:
-          - name: MSSQL_PID
-            value: "Express"
-          - name: ACCEPT_EULA
-            value: "Y"
-          - name: SA_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: mssql 
-                key: SA_PASSWORD #kubectl create secret generic mssql --from-literal=SA_PASSWORD="<pass>"
+            - name: MSSQL_PID
+              value: "Express"
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: SA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mssql 
+                  key: SA_PASSWORD #kubectl create secret generic mssql --from-literal=SA_PASSWORD="<pass>"
           volumeMounts:
-          - mountPath: /var/opt/mssql/data #linux mssql data path
-            name: mssqldb
+            - mountPath: /var/opt/mssql/data #linux mssql data path
+              name: mssqldb
       volumes:
-      - name: mssqldb
-        persistentVolumeClaim:
-          claimName: mssql-claim #05-local-pvc
+        - name: mssqldb
+          persistentVolumeClaim:
+            claimName: mssql-claim #05-local-pvc
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: mssql-clusterip-srv
+  name: mssql-clusterip-svc
 spec:
   type: ClusterIP
   selector:
-    app: mssql-service
+    app: mssql-svc
   ports:
-    - name: mssql-service
+    - name: mssql-port
       protocol: TCP
       port: 1433
       targetPort: 1433
@@ -56,7 +56,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: mssql-service
+    app: mssql-svc
   ports:
   - protocol: TCP
     port: 1433
