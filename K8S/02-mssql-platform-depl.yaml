@@ -18,22 +18,22 @@ spec:
           ports:
             - containerPort: 1433
           env:
-          - name: MSSQL_PID
-            value: "Express"
-          - name: ACCEPT_EULA
-            value: "Y"
-          - name: SA_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: mssql 
-                key: SA_PASSWORD #kubectl create secret generic mssql --from-literal=SA_PASSWORD="<pass>"
+            - name: MSSQL_PID
+              value: "Express"
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: SA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mssql 
+                  key: SA_PASSWORD #kubectl create secret generic mssql --from-literal=SA_PASSWORD="<pass>"
           volumeMounts:
-          - mountPath: /var/opt/mssql/data #linux mssql data path
-            name: mssqldb
+            - mountPath: /var/opt/mssql/data #linux mssql data path
+              name: mssqldb
       volumes:
-      - name: mssqldb
-        persistentVolumeClaim:
-          claimName: mssql-claim #05-local-pvc
+        - name: mssqldb
+          persistentVolumeClaim:
+            claimName: mssql-claim #05-local-pvc
 ---
 apiVersion: v1
 kind: Service
@@ -44,7 +44,7 @@ spec:
   selector:
     app: mssql-svc
   ports:
-    - name: mssql-svc
+    - name: mssql-port
       protocol: TCP
       port: 1433
       targetPort: 1433

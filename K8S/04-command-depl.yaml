@@ -15,8 +15,8 @@ spec:
       containers:
         - name: command-svc
           image: lhuck/command-service:latest
-          ports:
-            - containerPort: 80
+          #ports:
+            #- containerPort: 80
 ---
 apiVersion: v1
 kind: Service
