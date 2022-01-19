@@ -34,4 +34,4 @@ spec:
     - name: platform-grpc-port
       protocol: TCP
       port: 666
-      target: 666
+      targetPort: 666
