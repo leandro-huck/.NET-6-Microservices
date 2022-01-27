@@ -3,7 +3,6 @@ using CommandService.Data;
 using CommandService.EventProcessing;
 using CommandService.SyncDataServices.Grpc;
 using Microsoft.EntityFrameworkCore;
-using CommandService.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

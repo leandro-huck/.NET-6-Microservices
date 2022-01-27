@@ -9,9 +9,9 @@ namespace CommandService.AsyncDataServices
     {
         private readonly IConfiguration _configuration;
         private readonly IEventProcessor _eventProcessor;
-        private IConnection _connection;
-        private IModel _channel;
-        private string _queueName;
+        private IConnection? _connection;
+        private IModel? _channel;
+        private string? _queueName;
 
         public MessageBusSuscriber(
             IConfiguration configuration,
@@ -63,7 +63,7 @@ namespace CommandService.AsyncDataServices
             return Task.CompletedTask;
         }
 
-        private void RabbitMQ_ConnectionShutdown(object sender, ShutdownEventArgs e)
+        private void RabbitMQ_ConnectionShutdown(object? sender, ShutdownEventArgs? e)
         {
             Console.WriteLine("--> RabbitMQ connections closed");
         }
@@ -71,7 +71,9 @@ namespace CommandService.AsyncDataServices
         public override void Dispose()
         {
             Console.WriteLine("--> MessageBus Dispossed");
-            if (_channel.IsOpen)
+            if (_connection != null &&
+                _channel != null &&
+                _channel.IsOpen)
             {
                 _channel.Close();
                 _connection.Close();

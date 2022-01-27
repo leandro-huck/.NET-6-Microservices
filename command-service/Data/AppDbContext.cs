@@ -3,15 +3,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CommandService.Data
 {
-    public class AppDbContext: DbContext
+    public class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> opt) : base(opt)
-        {            
+        {
 
         }
-        
-        public DbSet<Platform> Platforms { get; set; }
-        public DbSet<Command> Commands { get; set; }        
+
+        public DbSet<Platform> Platforms => Set<Platform>();
+        public DbSet<Command> Commands => Set<Command>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

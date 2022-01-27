@@ -4,6 +4,10 @@ namespace CommandService.Models
 {
     public class Platform
     {
+        public Platform()
+        {
+            Name = "";
+        }
         [Key]
         [Required]
         public int Id { get; set; }

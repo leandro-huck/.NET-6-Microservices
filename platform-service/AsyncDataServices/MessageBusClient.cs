@@ -7,9 +7,9 @@ namespace PlatformService.AsyncDataServices
 {
     public class MessageBusClient : IMessageBusClient
     {
-        private readonly IConfiguration _configuration;
-        private readonly IConnection _connection;
-        private readonly IModel _channel;
+        private readonly IConfiguration? _configuration;
+        private readonly IConnection? _connection;
+        private readonly IModel? _channel;
 
         public MessageBusClient(IConfiguration configuration)
         {
@@ -41,7 +41,7 @@ namespace PlatformService.AsyncDataServices
         {
             string message = JsonSerializer.Serialize(platformPublishedDto);
 
-            if (_connection.IsOpen)
+            if (_connection != null && _connection.IsOpen)
             {
                 Console.WriteLine("--> RabbitMQ Connection Open, sending message...");
                 SendMessage(message);
@@ -55,7 +55,9 @@ namespace PlatformService.AsyncDataServices
         public void Dispose()
         {
             Console.WriteLine("--> MessageBus Dispossed");
-            if (_channel.IsOpen)
+            if (_connection != null &&
+                _channel != null &&
+                _channel.IsOpen)
             {
                 _channel.Close();
                 _connection.Close();
@@ -73,7 +75,7 @@ namespace PlatformService.AsyncDataServices
             Console.WriteLine($"--> We have sent {message}");
         }
 
-        private void RabbitMQ_ConnectionShutdown(object sender, ShutdownEventArgs e)
+        private void RabbitMQ_ConnectionShutdown(object? sender, ShutdownEventArgs? e)
         {
             Console.WriteLine("--> RabbitMQ Connection Shutdown");
         }

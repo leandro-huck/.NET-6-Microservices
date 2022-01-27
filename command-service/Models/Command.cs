@@ -4,6 +4,12 @@ namespace CommandService.Models
 {
     public class Command
     {
+        public Command()
+        {
+            HowTo = "";
+            CommandLine = "";
+            Platform = new Platform();
+        }
         [Key]
         [Required]
         public int Id { get; set; }
