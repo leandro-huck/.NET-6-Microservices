@@ -1,5 +1,5 @@
 # .NET-6-Microservices
-Code for Les Jackson's introduction to .NET Microservices course
+Code for Les Jackson's .NET Microservices Course
 > https://www.youtube.com/watch?v=DgVjEo3OGBI
 
 ![Kubernetes Architecture](kubernetes-architecture.png)
