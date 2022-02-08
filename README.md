@@ -1,4 +1,4 @@
-# .NET-Microservices-Course
+# .NET-6-Microservices
 Code for Les Jackson's introduction to .NET Microservices course
 > https://www.youtube.com/watch?v=DgVjEo3OGBI
 
